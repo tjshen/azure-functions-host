@@ -3,7 +3,6 @@
 
 using System;
 using System.Net.Http;
-using Az.ServerlessSecurity.Platform;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Azure.WebJobs.Host.Config;
 using Microsoft.Azure.WebJobs.Host.Executors;
@@ -112,11 +111,6 @@ namespace Microsoft.Azure.WebJobs.Script.WebHost
                     if (!environment.IsV2CompatibilityMode())
                     {
                         new FunctionsMvcBuilder(services).AddNewtonsoftJson();
-                    }
-
-                    //if(true) //environment.IsAzureMonitorEnabled()
-                    {
-                        services.AddSingleton<IHostedService, ServerlessSecurityHost>();
                     }
 
                     services.AddSingleton<HttpRequestQueue>();
