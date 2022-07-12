@@ -177,7 +177,7 @@ namespace Microsoft.Azure.WebJobs.Script.WebHost
 
             //ServelessSecurityDefender
             services.ConfigureOptionsWithChangeTokenSource<ServerlessSecurityDefenderOptions, ServerlessSecurityDefenderOptionsSetup, SpecializationChangeTokenSource<ServerlessSecurityDefenderOptions>>();
-            services.AddHostedService<ServerlessSecurityHost>();
+            services.AddSingleton<IHostedService, ServerlessSecurityHost>();
 
             services.TryAddSingleton<IDependencyValidator, DependencyValidator>();
             services.TryAddSingleton<IJobHostMiddlewarePipeline>(s => DefaultMiddlewarePipeline.Empty);
